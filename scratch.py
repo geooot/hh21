@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 def get_pokemon(offset, limit):
@@ -18,4 +19,13 @@ def get_pokemon(offset, limit):
         return None
 
 
-print(get_pokemon(0,20))
+def get_pokemon_details(pokemon_id):
+    res = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}")
+
+    if res.status_code == 200:
+        pokemon_details = res.json()
+        return pokemon_details
+    else: 
+        return None
+
+print(json.dumps(get_pokemon_details(1), indent=4))
