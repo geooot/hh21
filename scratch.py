@@ -1,12 +1,21 @@
 import requests
-import pandas as pd
 
-res = requests.get("https://pokeapi.co/api/v2/pokemon?limit=20=offset=0")
 
-if res.status_code == 200:
-    data = res.json()
+def get_pokemon(offset, limit):
+    res = requests.get(f"https://pokeapi.co/api/v2/pokemon?limit={limit}=offset={offset}")
+    print(res.status_code)
 
-    pokemon_df = pd.DataFrame.from_dict(data["results"])
-    print(pokemon_df)
-else: 
-    print("server returned an error!")
+    if res.status_code == 200:
+        data = res.json()
+        for i, pokemon in enumerate(data["results"]):
+            url = pokemon["url"]
+            pokemon_id = url.split("/")[-2]
+            image_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{pokemon_id}.png"
+            data["results"][i]["pokemon_id"] = pokemon_id
+            data["results"][i]["image_url"] = image_url
+            return data
+    else: 
+        return None
+
+
+print(get_pokemon(0,20))
