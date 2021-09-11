@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Maroon</title>
+</head>
+<body>
+    <h1>Here are some pokemon:</h1>
+    <ol>
+        {% for pokemon in pokemon_list %}
+        <li><img src="{{pokemon.image_url}}" width="200px"/>{{ pokemon.name }}</li>
+        {% endfor %}
+    </ol>
+</body>
+</html>
