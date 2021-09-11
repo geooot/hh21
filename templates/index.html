@@ -16,7 +16,7 @@
     {% endif %}
     <ol>
         {% for pokemon in pokemon_list %}
-        <li><img src="{{pokemon.image_url}}" width="200px"/>{{ pokemon.name }}</li>
+        <li><a href="/{{pokemon.pokemon_id}}"><img src="{{pokemon.image_url}}" width="200px"/>{{ pokemon.name }}</a></li>
         {% endfor %}
     </ol>
 </body>
