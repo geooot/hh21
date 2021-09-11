@@ -3,7 +3,7 @@ import json
 
 
 def get_pokemon(offset, limit):
-    res = requests.get(f"https://pokeapi.co/api/v2/pokemon?limit={limit}=offset={offset}")
+    res = requests.get(f"https://pokeapi.co/api/v2/pokemon?limit={limit}&offset={offset}")
     print(res.status_code)
 
     if res.status_code == 200:

@@ -8,6 +8,12 @@
 </head>
 <body>
     <h1>Here are some pokemon:</h1>
+    {% if prev_api_url %}
+    <a href="/?offset={{offset-limit}}&limit={{limit}}">[Prev]</a>
+    {% endif %}
+    {% if next_api_url %}
+    <a href="/?offset={{offset+limit}}&limit={{limit}}">[Next]</a>
+    {% endif %}
     <ol>
         {% for pokemon in pokemon_list %}
         <li><img src="{{pokemon.image_url}}" width="200px"/>{{ pokemon.name }}</li>
